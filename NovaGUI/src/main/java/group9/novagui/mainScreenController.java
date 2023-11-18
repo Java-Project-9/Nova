@@ -3,10 +3,10 @@ package group9.novagui;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class SecondaryController {
+public class mainScreenController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
+    private void switchToLogin() throws IOException { //Remove this later
         App.setRoot("loginScreen");
     }
     @FXML

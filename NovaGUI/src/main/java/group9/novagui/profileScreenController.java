@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
  * @author Nathan
  */
 
-public class profileController {
+public class profileScreenController {
     
     @FXML
     private void toMainClick() throws IOException {

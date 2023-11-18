@@ -43,13 +43,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group9.novagui.SecondaryController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group9.novagui.mainScreenController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
             <Menu mnemonicParsing="false" text="Profile">
               <items>
-                <MenuItem mnemonicParsing="false" text="Look at profile" />
+                <MenuItem fx:id="menuToProfileItem" mnemonicParsing="false" onAction="#toProfileClick" text="Open Profile" />
                   <MenuItem mnemonicParsing="false" text="Settings?" />
                   <MenuItem mnemonicParsing="false" text="Sign Out?" />
               </items>
@@ -69,8 +69,7 @@
                </font>
             </Text>
             <ListView layoutX="368.0" layoutY="132.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="secondaryButton" layoutX="24.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchToPrimary" text="back to login" />
-            <Button fx:id="toProfile" layoutX="24.0" layoutY="307.0" mnemonicParsing="false" onAction="#toProfileClick" text="to profile" />
+            <Button fx:id="toLoginButton" layoutX="24.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchToLogin" text="back to login" />
          </children>
     </AnchorPane>
   </children>
