@@ -50,7 +50,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="95.0" layoutY="260.0" mnemonicParsing="false" text="Create Account" />
+            <Button layoutX="95.0" layoutY="260.0" mnemonicParsing="false" onAction="#createAccountClick" text="Create Account" />
             <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="188.0" />
             <TextField fx:id="tfUsername" layoutX="94.0" layoutY="136.0" />
             <Label layoutX="94.0" layoutY="119.0" text="Username:" />
