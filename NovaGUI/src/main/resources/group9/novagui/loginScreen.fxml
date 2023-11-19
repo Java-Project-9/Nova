@@ -52,9 +52,10 @@
             </Label>
             <Button layoutX="95.0" layoutY="260.0" mnemonicParsing="false" text="Create Account" />
             <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="188.0" />
-            <TextField fx:id="usernameField" layoutX="94.0" layoutY="136.0" />
+            <TextField fx:id="tfUsername" layoutX="94.0" layoutY="136.0" />
             <Label layoutX="94.0" layoutY="119.0" text="Username:" />
             <Label layoutX="94.0" layoutY="171.0" text="Password:" />
+            <Label fx:id="labelSignInError" layoutX="95.0" layoutY="91.0" textFill="RED" />
       </children>
     </AnchorPane>
   </children>
