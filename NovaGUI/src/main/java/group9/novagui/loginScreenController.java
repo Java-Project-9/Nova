@@ -1,8 +1,6 @@
 package group9.novagui;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
