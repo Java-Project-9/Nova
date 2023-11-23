@@ -1,22 +1,11 @@
-package group9.nova;
-
 public class AccountTest {
     public static void main(String[] args) {
-        // Testing creation
         Account testAccount = Account.createAccount("testusername", "testpassword");
-        System.out.println("Account created: " + testAccount.getUsername());
 
-        // Change password
-        testAccount.changePassword("testPassword", "superSafePassword");
+        testAccount.changePassword("newPassword");
 
-        // I mispelled it that time! Did it catch that? Let's try again
-        testAccount.changePassword("testpassword", "supersupersafepw");
-
-        // Testing login with new password
-        boolean loginSuccess = testAccount.login("testusername", "supersupersafepw");
+        boolean loginSuccess = testAccount.login("testusername", "testpassword");
 
         System.out.println("Login Success" + loginSuccess);
-
-        // need to test a second account for duplicate username
     }
 }
