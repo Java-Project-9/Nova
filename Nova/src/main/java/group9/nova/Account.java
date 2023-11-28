@@ -5,8 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 
 
@@ -64,7 +66,7 @@ public class Account {
                     return null;
                 }
             }
-        return username; // ?? if I remove this, it gives me an error. i need to figure it out bro
+        return username;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -77,15 +79,25 @@ public class Account {
         return newAccount;
     }
 
-    // saving to the .txt file
+    // Saving account data to the .txt file
     private void saveAccountData() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath)); 
+            BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
+
             File file = new File(filePath);
+
             if (!file.exists()) {
                 file.createNewFile();
             }
             
-            String formattedData = String.format("username: '%s', password: '%s'\n", username, password);
+            // Checking if the username already exists
+            String existingUsername = readFromFile("username");
+            if (existingUsername != null && existingUsername.equals(username)) {
+                System.out.println("Username already exists. Please choose another.");
+                return;
+            }
+
+            String formattedData = String.format("username: '%s', password: '%s'\n", username, password);                        
             writer.write(formattedData);
         } catch (IOException except) {
             except.printStackTrace();
@@ -107,6 +119,7 @@ public class Account {
     }
 
     public void deleteAccount() {
-        // delete account or mark as inactive?
+        //TODO read through and delete username/password from .txt file
+
     }
 }

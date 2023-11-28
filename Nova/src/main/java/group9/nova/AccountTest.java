@@ -17,6 +17,7 @@ public class AccountTest {
 
         System.out.println("Login Success" + loginSuccess);
 
-        // need to test a second account for duplicate username
+        // Testing duplicate username
+        Account testAccount2 = Account.createAccount("testusername", "test123");
     }
 }
