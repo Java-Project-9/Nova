@@ -16,7 +16,7 @@ import javafx.scene.control.PasswordField;
 
 public class loginScreenController {
     
-    private static final String filePath = "user1.txt"; // constant
+    private static final String FILEPATH = "user1.txt"; // constant
     int loginPressCounter = 0;
     @FXML
     private TextField tfUsername;
@@ -55,7 +55,7 @@ public class loginScreenController {
                     App.setRoot("MainScreen");
                 }
                 catch(IOException e){
-                    e.printStackTrace();
+                    e.printStackTrace(System.out);
                 }
             }
         });   
@@ -63,7 +63,7 @@ public class loginScreenController {
     
     public String readFromFile(String fieldName) { //Copied code from Rania's account in order to read through txt file for login
         
-        try (Scanner scanner = new Scanner(new File(filePath))) {
+        try (Scanner scanner = new Scanner(new File(FILEPATH))) {
             Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
 
             while (scanner.hasNextLine()) {
@@ -80,7 +80,7 @@ public class loginScreenController {
         System.out.println("Did not enter while loop, returned null / field not found");
         return null;
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return null;
         }
     }
