@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
 
 public class loginScreenController {
     
@@ -14,6 +15,8 @@ public class loginScreenController {
     private TextField tfUsername;
     @FXML
     private Label labelSignInError;
+    @FXML
+    private PasswordField pfPassword;
     @FXML
     private void logInClick() throws IOException {  //Add code for login check here
         loginPressCounter++;
@@ -35,6 +38,9 @@ public class loginScreenController {
         alert.showAndWait().ifPresent(response ->{
             if(response == ButtonType.OK){
                 try{
+                    Account.createAccount(tfUsername.getText(),pfPassword.getText());
+//                    Account newAccount = new Account(tfUsername.getText(),pfPassword.getText());
+                    System.out.printf("%s %s", tfUsername.getText(),pfPassword.getText());
                     App.setRoot("MainScreen");
                 }
                 catch(IOException e){
@@ -43,6 +49,6 @@ public class loginScreenController {
             }
         });
         
-        Account newAccount = new Account("user","pw");
+        
     }
 }

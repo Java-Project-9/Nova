@@ -59,16 +59,16 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        String nickname = "testUsernameXXX";
+        String nickname = "1coolnathan";
 
         // Specify the file path (path\\fileName.txt)
         String filePath = "C:\\Users\\Nathan\\Desktop\\JavaAssignments\\Nova\\user1.txt"; //Note that this references an already made text file.
         
-        SaveUserName(nickname, filePath);
+//        SaveUserName(nickname, filePath);
 
-        System.out.println("Nickname has been saved to the file.");
+//        System.out.println("Nickname has been saved to the file.");
         
-        ReadUserName(filePath);
+//        ReadUserName(filePath);
         
         launch();
     }
