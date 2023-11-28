@@ -4,15 +4,22 @@
  */
 package group9.nova;
 
+
+import java.time.*;
+
+
 /**
  *
  * @author xxcoo
  */
-public class TimeTest {
 
+public class TimeTest {
     public static void main(String[] args) {
         Time t1 = new Time(23, 18, 23);
-        
+        LocalTime lt = LocalTime.now();
+        System.out.printf("Local time is: %s\n", lt.now()); 
         System.out.printf("Time: %s", t1.toString());
+        
+        
     }
 }
