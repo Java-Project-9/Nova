@@ -49,8 +49,9 @@ public class loginScreenController {
         alert.setContentText("Are you sure you want to create an account?");
         alert.showAndWait().ifPresent(response ->{
             if(response == ButtonType.OK){    //Confirmation for creating account
-                try{
+                try{             
                     Account.createAccount(tfUsername.getText(),pfPassword.getText()); //Refers to account function in creating account
+                    //profile object instantiation
                     System.out.printf("%s %s", tfUsername.getText(),pfPassword.getText());
                     App.setRoot("MainScreen");
                 }
