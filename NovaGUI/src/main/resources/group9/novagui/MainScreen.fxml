@@ -50,8 +50,8 @@
             <Menu mnemonicParsing="false" text="Profile">
               <items>
                 <MenuItem fx:id="menuToProfileItem" mnemonicParsing="false" onAction="#toProfileClick" text="Open Profile" />
+                  <MenuItem mnemonicParsing="false" text="Sign Out" />
                   <MenuItem mnemonicParsing="false" text="Settings?" />
-                  <MenuItem mnemonicParsing="false" text="Sign Out?" />
               </items>
             </Menu>
       </menus>

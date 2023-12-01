@@ -33,7 +33,11 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -44,17 +48,41 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile">
+            <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile">
                <font>
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Text>
-            <ScrollBar layoutX="612.0" layoutY="21.0" orientation="VERTICAL" prefHeight="358.0" prefWidth="14.0" />
-            <TextField layoutX="14.0" layoutY="91.0" promptText="Nickname" />
-            <TextField layoutX="14.0" layoutY="131.0" promptText="Hrs Played" />
-            <Button layoutX="14.0" layoutY="354.0" mnemonicParsing="false" text="Save Button" />
-            <TextField layoutX="14.0" layoutY="175.0" promptText="etc..." />
-            <Button fx:id="toMainBtn" layoutX="294.0" layoutY="230.0" mnemonicParsing="false" onAction="#toMainClick" text="To Main Menu" />
+            <TextField layoutX="16.0" layoutY="104.0" promptText="Nickname" />
+            <Button layoutX="173.0" layoutY="104.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Save Nickname" />
+            <Button fx:id="toMainBtn" layoutX="532.0" layoutY="361.0" mnemonicParsing="false" onAction="#toMainClick" text="To Main Menu" />
+            <Label layoutX="16.0" layoutY="144.0" text="Hours Played: " />
+            <Label layoutX="92.0" layoutY="144.0" text="X" />
+            <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="640.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Sign Out">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Sign Out" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Label layoutX="16.0" layoutY="75.0" text="User Info:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="415.0" layoutY="75.0" text="Achievements:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="200.0" text="Friends List:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <ListView layoutX="15.0" layoutY="229.0" prefHeight="157.0" prefWidth="200.0" />
       </children>
     </AnchorPane>
   </children>

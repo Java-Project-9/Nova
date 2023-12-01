@@ -118,5 +118,5 @@ public class Account {
     public void deleteAccount() {
         //TODO read through and delete username/password/other info from .txt file
 
-    }
+    }  
 }
