@@ -97,7 +97,7 @@ public class Account {
             String formattedData = String.format("\nusername: '%s', password: '%s'", username, password);                        
             writer.write(formattedData);
         } catch (IOException except) {
-            except.printStackTrace();
+            except.printStackTrace(System.out);
         }
     }
 

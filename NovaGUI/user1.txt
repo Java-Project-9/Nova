@@ -1,4 +1,4 @@
 username: '1coolnathan', password: '1234'
 username: 'xxx', password: 'pw1'
-username: '1coolnathan', password: '1234'
-username: '1coolnathan', password: '1234'
+username: 'testusername', password: 'testpassword'
+1coolnathan, nickname: 'nickname', totaltime: 'null'

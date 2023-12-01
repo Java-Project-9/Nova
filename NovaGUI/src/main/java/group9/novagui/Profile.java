@@ -4,10 +4,15 @@
  */
 package group9.novagui;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+//import java.io.File;
 import java.io.IOException;
+//import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -15,10 +20,11 @@ import java.io.IOException;
  */
 public class Profile{
    
+        private Account account;
         private String nickName;
         private Time timeLogin;
         private Time timeLogout;
-    //    private String saveFile;
+        private String totalTime;
         private static final String filePath = "user1.txt"; // constant
 
         //add timelogin and timelogout parameters
@@ -29,25 +35,25 @@ public class Profile{
             this.timeLogout = timeLogout;
             this.timeLogin  = timeLogin;
         }
-        public static Profile createProfile(String nickname, Time timeLogin, Time timeLogout) {
+        public static Profile createProfile(String nickname, Time timeLogin, Time timeLogout) { // must be time Total
             Profile newProfile = new Profile(nickname, timeLogin, timeLogout);
-            newProfile.saveAccountData();
+            newProfile.updateSaveFile("12");
             return newProfile;
         }
-
-        private void saveAccountData() {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
-                File file = new File(filePath);
-                if (!file.exists()) {
-                    file.createNewFile();
-                }
-
-                String formattedData = String.format("nickname: '%s', timeTotal: '%s'\n", nickName, timeCalc());
-                writer.write(formattedData);
-            } catch (IOException except) {
-                except.printStackTrace(System.out);
-            }
-        }
+//
+//        private void saveAccountData() {
+//            try (BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
+//                File file = new File(filePath);
+//                if (!file.exists()) {
+//                    file.createNewFile();
+//                }
+//
+//                String formattedData = String.format("nickname: '%s', timeTotal: '%s'\n", nickName, timeCalc());
+//                writer.write(formattedData);
+//            } catch (IOException except) {
+//                except.printStackTrace(System.out);
+//            }
+//        }
 
         public String getNickName(){return nickName;}
         public void setNickName(String nickName){
@@ -76,5 +82,63 @@ public class Profile{
     //        //suppose to be update not to be replaced so how to add the data in the txt file not replacing
     //        this.saveFile = saveFile;
     //    }
+// Rania's test code -----------------------------------------------------------------------------------------------------------------------//
+        public void updateSaveFile(String newTotalTime) {
+        // Reading from existing file:
+        String existingContent = readFromFile("username");
 
+        Pattern totalTimePattern = Pattern.compile("totaltime: '\\s*(.*?)\\s*");
+        Matcher totalTimeMatcher = totalTimePattern.matcher(existingContent);
+
+        // Checking to see if the totalTime already exists in the text file
+        if (totalTimeMatcher.find()) {
+            String updatedContent = existingContent.replaceFirst(totalTimeMatcher.group(1), newTotalTime);
+            
+            writeToFile(filePath, updatedContent);
+        } else {
+            // Adding the total time. Please note the totalTime again as placeholder for your calculations.
+            String updatedContent = existingContent + String.format(", nickname: '%s', totaltime: '%s'", nickName, totalTime);
+
+            // Using the Helper method to actually write the content.
+            writeToFile(filePath, updatedContent);
+        }
+    }
+        private String readFromFile(String fieldName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            // Regex looking for pattern that has the fieldName:
+            Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
+
+            StringBuilder content = new StringBuilder();
+            String line;
+
+            // This is to check if the pattern actually matches what's in the file. If something is going to go wrong, it might be here...
+            while (( line = reader.readLine()) != null) {
+                content.append(line);
+
+                Matcher match = pattern.matcher(line);
+
+                if (match.find()) {
+                    return match.group(1);
+                } else {
+                    System.out.println("Field not found.");
+                    return null;
+                }
+            }
+
+            return content.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+            return null;
+        }
+    }
+        
+        private void writeToFile(String filePath, String content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+          }
+        }
+        
     }
