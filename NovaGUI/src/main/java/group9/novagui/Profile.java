@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author omaro
  */
-class Profile extends Account{
+public class Profile{
    
         private String nickName;
         private Time timeLogin;
@@ -42,7 +42,7 @@ class Profile extends Account{
                     file.createNewFile();
                 }
 
-                String formattedData = String.format("username: '%s', password: '%s'\n", username, password);
+                String formattedData = String.format("nickname: '%s', timeTotal: '%s'\n", nickName, timeCalc());
                 writer.write(formattedData);
             } catch (IOException except) {
                 except.printStackTrace(System.out);
