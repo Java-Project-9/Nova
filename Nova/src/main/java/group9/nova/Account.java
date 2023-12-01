@@ -5,15 +5,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.io.BufferedWriter;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
 
 
 public class Account {
-    private static final String filePath = "accounts.txt"; // constant
+    public static final String filePath = "accounts.txt"; // constant
     private String username;
     private String password;
 
@@ -81,8 +79,7 @@ public class Account {
 
     // Saving account data to the .txt file
     private void saveAccountData() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath)); 
-            BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
 
             File file = new File(filePath);
 
@@ -97,7 +94,7 @@ public class Account {
                 return;
             }
 
-            String formattedData = String.format("username: '%s', password: '%s'\n", username, password);                        
+            String formattedData = String.format("\nusername: '%s', password: '%s'", username, password);                        
             writer.write(formattedData);
         } catch (IOException except) {
             except.printStackTrace();
@@ -119,7 +116,7 @@ public class Account {
     }
 
     public void deleteAccount() {
-        //TODO read through and delete username/password from .txt file
+        //TODO read through and delete username/password/other info from .txt file
 
     }
 }
