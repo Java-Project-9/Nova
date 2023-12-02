@@ -21,7 +21,7 @@ public class Account {
     }
 
     public String getUsername() {
-        return readFromFile("username");
+        return this.username;
     }
 
     public String getPassword() {

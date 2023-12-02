@@ -6,9 +6,12 @@ package group9.novagui;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-//import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 //import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -24,7 +27,7 @@ public class Profile{
         private String nickName;
         private Time timeLogin;
         private Time timeLogout;
-        private String totalTime;
+        private int totalTime;
         private static final String filePath = "user1.txt"; // constant
 
         //add timelogin and timelogout parameters
@@ -37,7 +40,7 @@ public class Profile{
         }
         public static Profile createProfile(String nickname, Time timeLogin, Time timeLogout) { // must be time Total
             Profile newProfile = new Profile(nickname, timeLogin, timeLogout);
-            newProfile.updateSaveFile("12");
+//            newProfile.updateSaveFile("12");
             return newProfile;
         }
 //
@@ -82,57 +85,78 @@ public class Profile{
     //        //suppose to be update not to be replaced so how to add the data in the txt file not replacing
     //        this.saveFile = saveFile;
     //    }
-// Rania's test code -----------------------------------------------------------------------------------------------------------------------//
-        public void updateSaveFile(String newTotalTime) {
-        // Reading from existing file:
-        String existingContent = readFromFile("username");
-
-        Pattern totalTimePattern = Pattern.compile("totaltime: '\\s*(.*?)\\s*");
-        Matcher totalTimeMatcher = totalTimePattern.matcher(existingContent);
-
-        // Checking to see if the totalTime already exists in the text file
-        if (totalTimeMatcher.find()) {
-            String updatedContent = existingContent.replaceFirst(totalTimeMatcher.group(1), newTotalTime);
+        public void txtAppend(){
+            String textToAppend = "15"; //totalTime
+            String[] lineArr = new String[20];
             
-            writeToFile(filePath, updatedContent);
-        } else {
-            // Adding the total time. Please note the totalTime again as placeholder for your calculations.
-            String updatedContent = existingContent + String.format(", nickname: '%s', totaltime: '%s'", nickName, totalTime);
+            try {
+            // Read the existing content of the file
+            Path fP = Path.of("C:\\Users\\Nathan\\Desktop\\JavaAssignments\\Nova\\NovaGUI\\user1.txt");
+            String existingContent = Files.readString(fP);
 
-            // Using the Helper method to actually write the content.
-            writeToFile(filePath, updatedContent);
-        }
-    }
-        private String readFromFile(String fieldName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            // Append the new text to the existing content
+            String newContent = existingContent + textToAppend;
+            
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                String line;
+                String result = "";
+                while ((line = reader.readLine()) != null) {
+                    lineArr = line.split("\n", 0);
+                    for(String a : lineArr){
+                        System.out.println(a);
+                        if(true){
+                            a = a + textToAppend;
+                            System.out.println(a);
+                        }
+                        result = result + a + '\n';
+                    }
+                }
+//                PrintWriter writer = new PrintWriter(filePath);
+//                writer.print("");
+//                writer.close();
+                System.out.println(result);
+//                writeToFile(filePath,result);
+                Files.write(fP, result.getBytes(), StandardOpenOption.WRITE);
+                
+                
+                
+                } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
             // Regex looking for pattern that has the fieldName:
-            Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
+//            Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
 
-            StringBuilder content = new StringBuilder();
-            String line;
+//            StringBuilder content = new StringBuilder();
+            
 
             // This is to check if the pattern actually matches what's in the file. If something is going to go wrong, it might be here...
-            while (( line = reader.readLine()) != null) {
-                content.append(line);
+            
+//                content.append(line);
+//
+//                Matcher match = pattern.matcher(line);
+//
+//                if (match.find()) {
+//                    return match.group(1);
+//                } else {
+//                    System.out.println("Field not found.");
+//                    return null;
+//                }
+//            }
+//
+//            return content.toString();
 
-                Matcher match = pattern.matcher(line);
+        
 
-                if (match.find()) {
-                    return match.group(1);
-                } else {
-                    System.out.println("Field not found.");
-                    return null;
-                }
-            }
+            // Write the modified content back to the file
+//            Files.write(fP, newContent.getBytes(), StandardOpenOption.WRITE);
 
-            return content.toString();
+//            System.out.println("Text appended successfully.");
 
         } catch (IOException e) {
             e.printStackTrace(System.out);
-            return null;
         }
-    }
-        
+            
+        }
         private void writeToFile(String filePath, String content) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(content);
@@ -140,5 +164,57 @@ public class Profile{
             e.printStackTrace(System.out);
           }
         }
+// Rania's test code -----------------------------------------------------------------------------------------------------------------------//
+//        public void updateSaveFile(String newTotalTime) {
+//        // Reading from existing file:
+//        String existingContent = readFromFile("username");
+//
+//        Pattern totalTimePattern = Pattern.compile("totaltime: '\\s*(.*?)\\s*");
+//        Matcher totalTimeMatcher = totalTimePattern.matcher(existingContent);
+//
+//        // Checking to see if the totalTime already exists in the text file
+//        if (totalTimeMatcher.find()) {
+//            String updatedContent = existingContent.replaceFirst(totalTimeMatcher.group(1), newTotalTime);
+//            
+//            writeToFile(filePath, updatedContent);
+//        } else {
+//            // Adding the total time. Please note the totalTime again as placeholder for your calculations.
+//            String updatedContent = existingContent + String.format(", nickname: '%s', totaltime: '%s'", nickName, totalTime);
+//
+//            // Using the Helper method to actually write the content.
+//            writeToFile(filePath, updatedContent);
+//        }
+//    }
+//        private String readFromFile(String fieldName) {
+//        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+//            // Regex looking for pattern that has the fieldName:
+//            Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
+//
+//            StringBuilder content = new StringBuilder();
+//            String line;
+//
+//            // This is to check if the pattern actually matches what's in the file. If something is going to go wrong, it might be here...
+//            while (( line = reader.readLine()) != null) {
+//                content.append(line);
+//
+//                Matcher match = pattern.matcher(line);
+//
+//                if (match.find()) {
+//                    return match.group(1);
+//                } else {
+//                    System.out.println("Field not found.");
+//                    return null;
+//                }
+//            }
+//
+//            return content.toString();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace(System.out);
+//            return null;
+//        }
+//    }
+//        
+        
         
     }

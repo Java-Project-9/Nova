@@ -3,10 +3,12 @@ package group9.novagui;
 public class AccountTest {
     public static void main(String[] args) {
         // Testing creation
+        
         Time t1 = new Time(23, 18, 23);
-        Account testAccount = Account.createAccount("testusername", "testpassword");
-        System.out.println("Account created: " + testAccount.getUsername());
+//        Account testAccount = Account.createAccount("testusername", "testpassword");
+//        System.out.println("Account created: " + testAccount.getUsername());
         Profile testProfile = Profile.createProfile("nickname", t1, t1);
+        testProfile.txtAppend();
         
 
 //        // Change password
