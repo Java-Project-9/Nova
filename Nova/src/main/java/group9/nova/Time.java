@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package group9.nova;
-
+import java.time.LocalTime;
 /**
  *
  * @author xxcoo
@@ -12,9 +12,17 @@ public class Time {
     private int hour;
     private int minute;
     private int second;
-    
-    public Time(int hour, int minute, int second){ //constructor
-        if (hour < 0 ||hour >=24)
+    private LocalTime time;
+   
+    public Time() { // Default constructor using current local time
+        LocalTime now = LocalTime.now();
+        this.hour = now.getHour();
+        this.minute = now.getMinute();
+        this.second = now.getSecond();
+        this.time = now;
+    }
+    public Time(int hour, int minute, int second) { // Overloaded constructor
+        if (hour < 0 || hour >= 24)
             throw new IllegalArgumentException("Hour must be between 0 and 24");
         if (minute < 0 || minute >= 60)
             throw new IllegalArgumentException("Minute must be between 0 and 60");
@@ -23,6 +31,7 @@ public class Time {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+        this.time = LocalTime.of(hour, minute, second);
     }
     
     public void setHour(int hour){ //constructor
@@ -62,4 +71,6 @@ public class Time {
         return String.format("%d:%02d:%02d %s", 
                 ((getHour() == 0 || getHour() == 12) ? 12 : getHour() % 12), getMinute(), getSecond(), (getHour() < 12 ? "AM" : "PM")); 
     }
+    
+    
 }
