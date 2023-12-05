@@ -18,10 +18,7 @@ import javafx.fxml.FXML;
  */
 
 public class profileScreenController {
-    Time t1 = new Time(23, 18, 23);
-//    Profile testProfile = Profile.createProfile("nickname", t1, t1);
-//    testProfile.txtAppend();
-//    newAccount.getUsername;
+
     private static final String FILEPATH = "user1.txt"; // constant
     @FXML
     private void toMainClick() throws IOException {
@@ -81,9 +78,9 @@ public class profileScreenController {
                     return null;
                 }
             }
-        return null; // ?? if I remove this, it gives me an error. i need to figure it out bro
+        return null; 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return null;
         }
     }

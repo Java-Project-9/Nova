@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 public class Account {
-    private static final String filePath = "user1.txt"; // constant
+    private static final String FILEPATH = "user1.txt"; // constant
     private String username;
     private String password;
 
@@ -50,7 +50,7 @@ public class Account {
     }
 
     public String readFromFile(String fieldName) {
-        try (Scanner scanner = new Scanner(new File(filePath))) {
+        try (Scanner scanner = new Scanner(new File(FILEPATH))) {
             Pattern pattern = Pattern.compile(fieldName + ": '\\s*(.*?)\\s*'");
 
             while (scanner.hasNextLine()) {
@@ -64,9 +64,9 @@ public class Account {
                     return null;
                 }
             }
-        return username; // ?? if I remove this, it gives me an error. i need to figure it out bro
+        return username; 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return null;
         }
     }
@@ -79,8 +79,8 @@ public class Account {
 
     // saving to the .txt file
     private void saveAccountData() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter (filePath, true))) {
-            File file = new File(filePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter (FILEPATH, true))) {
+            File file = new File(FILEPATH);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -88,7 +88,7 @@ public class Account {
             String formattedData = String.format("username: '%s', password: '%s'\n", username, password);
             writer.write(formattedData);
         } catch (IOException except) {
-            except.printStackTrace();
+            except.printStackTrace(System.out);
         }
     }
 

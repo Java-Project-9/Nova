@@ -11,11 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+
 public class loginScreenController {
     
     private static final String FILEPATH = "user1.txt"; // constant
@@ -64,29 +60,6 @@ public class loginScreenController {
         });   
     }
     
-//    @FXML
-//    private void sendData(MouseEvent event) {
-//      // Step 1
-//      User u = new User();
-//      // Step 2
-//      Node node = (Node) event.getLink();
-//      // Step 3
-//      Stage stage = (Stage) node.getScene().getWindow();
-//      stage.close();
-//      try {
-//        // Step 4
-//        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loginScreen.fxml"));
-//        // Step 5
-//        stage.setUserData(u);
-//        // Step 6
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        // Step 7
-//        stage.show();
-//      } catch (IOException e) {
-//        System.err.println(String.format("Error: %s", e.getMessage()));
-//      }
-//    }
     
     public String readFromFile(String fieldName) { //Copied code from Rania's account in order to read through txt file for login
         
